@@ -32,6 +32,10 @@
 
 - make second commit
 
+### Start TDD process
+
+- Design tests for each user story, writing code to pass each fail as the tests are run.
+
 
 
 
