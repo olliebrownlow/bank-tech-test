@@ -25,9 +25,12 @@ describe Account do
 			@account.withdraw(100)
 			expect(@account.balance).to eq(400)
 		end
+	end
 
-		xit "stores each transaction into an array" do
-
+	describe "storing transactions" do
+		it "stores each deposit transaction" do
+			@account.deposit(500)
+			expect(@account.transactions).to include(500)
 		end
 	end
 end
