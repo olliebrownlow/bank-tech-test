@@ -32,5 +32,11 @@ describe Account do
 			@account.deposit(500)
 			expect(@account.transactions).to include(["01/07/2019", 500, "", @account.balance])
 		end
+
+		it "stores each withdrawal transaction with a date stamp, an empty string for deposits, the withdrawal amount and the balance" do
+			@account.deposit(500)
+			@account.withdraw(200)
+			expect(@account.transactions).to include(["01/07/2019", "", 200, @account.balance])
+		end
 	end
 end

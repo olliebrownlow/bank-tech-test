@@ -14,5 +14,7 @@ class Account
 
 	def withdraw(amount)
 		@balance -= amount
+		formatted_date = Time.now.strftime("%d/%m/%Y")
+		@transactions.push([formatted_date, "", amount, @balance])
 	end
 end
