@@ -1,31 +1,44 @@
+# frozen_string_literal: true
+
 class Account
-	 attr_reader :balance, :transactions
+  OPENING_BALANCE = 0
+  attr_reader :balance, :transactions
 
-	 def initialize
- 		 @balance = 0
- 		 @transactions = []
- 	end
+  def initialize
+    @balance = OPENING_BALANCE
+    @transactions = []
+  end
 
-	 def deposit(amount)
- 		 @balance += amount
- 		 @transactions.unshift([date_format, amount, "", @balance])
- 	end
+  def deposit(amount)
+    @balance += amount
+		@transactions.unshift([
+			formatted_date,
+			'%.2f' % amount,
+			'',
+			format('%.2f', @balance)
+		])
+  end
 
-	 def withdraw(amount)
- 		 @balance -= amount
- 		 @transactions.unshift([date_format, "", amount, @balance])
- 	end
-	 
-	 def statement
- 		 @transactions.unshift(["date", "credit", "debit", "balance"])
- 		 @transactions.each { |t|
-  				puts t.join(" || ")
-  		}
- 	end
+  def withdraw(amount)
+    @balance -= amount
+		@transactions.unshift([
+			formatted_date,
+			'',
+			'%.2f' % amount,
+			format('%.2f', @balance)
+		])
+  end
 
-	private
+  def print_statement
+    @transactions.unshift(%w[date credit debit balance])
+    @transactions.each do |t|
+      puts t.join(' || ')
+    end
+  end
 
-	 def date_format
- 		 Time.now.strftime("%d/%m/%Y")
- 	end
+  private
+
+  def formatted_date
+    Time.now.strftime('%d/%m/%Y')
+  end
 end

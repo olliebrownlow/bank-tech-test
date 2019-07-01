@@ -32,9 +32,13 @@
 
 - make second commit
 
-### Start TDD process
+### Start the TDD process
 
 - Design tests for each user story, writing code to pass each fail as the tests are run.
+
+### Refactoring
+
+- Rubocop and code refactors
 
 
 
