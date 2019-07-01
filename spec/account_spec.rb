@@ -38,5 +38,18 @@ describe Account do
   			 @account.withdraw(200)
   			 expect(@account.transactions).to include(["01/07/2019", "", 200, @account.balance])
   		end
- 	end
+	 end
+	 
+	 describe "statements" do
+		  it "prints a statement" do
+  			 @account.deposit(1000)
+  			 @account.deposit(2000)
+  			 @account.withdraw(500)
+  			 expectation = expect { puts 'date || credit || debit || balance'; puts '01/07/2019 ||  || 500 || @account.balance'; puts '01/07/2019 || 2000 ||  || @account.balance'; puts '01/07/2019 || 1000 ||  || @account.balance' }
+    	 expectation.to output(/date || credit || debit || balance/).to_stdout
+  			 expectation.to output(/01\/07\/2019 ||  || 500 || @account.balance/).to_stdout
+  			 expectation.to output(/01\/07\/2019 || 2000 ||  || @account.balance/).to_stdout
+  			 expectation.to output(/01\/07\/2019 || 1000 ||  || @account.balance/).to_stdout
+  		end
+	 end
 end

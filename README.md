@@ -37,7 +37,16 @@ a.withdraw(100)
 
 ```
 As an account holder
-In order to check my account history
-I want to be able to print a date ordered statement
+In order to check my history
+I want to be able to print a statement
+
+require './lib/account.rb'
+a = Account.new
+a.balance
+a.deposit(1000)
+a.deposit(2000)
+a.withdraw(500)
+a.statement
 ```
+
 

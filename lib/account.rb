@@ -8,12 +8,19 @@ class Account
 
 	 def deposit(amount)
  		 @balance += amount
- 		 @transactions.push([date_format, amount, "", @balance])
+ 		 @transactions.unshift([date_format, amount, "", @balance])
  	end
 
 	 def withdraw(amount)
  		 @balance -= amount
- 		 @transactions.push([date_format, "", amount, @balance])
+ 		 @transactions.unshift([date_format, "", amount, @balance])
+ 	end
+	 
+	 def statement
+ 		 @transactions.unshift(["date", "credit", "debit", "balance"])
+ 		 @transactions.each { |t|
+  				puts t.join(" || ")
+  		}
  	end
 
 	private
