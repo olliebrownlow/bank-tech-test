@@ -8,7 +8,8 @@ class Account
 
 	def deposit(amount)
 		@balance += amount
-		@transactions.push(amount)
+		formatted_date = Time.now.strftime("%d/%m/%Y")
+		@transactions.push([formatted_date, amount])
 	end
 
 	def withdraw(amount)
