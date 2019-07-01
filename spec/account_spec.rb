@@ -28,9 +28,9 @@ describe Account do
 	end
 
 	describe "storing transactions" do
-		it "stores each deposit transaction with a date stamp and the balance" do
+		it "stores each deposit transaction with a date stamp, the deposit amount, an empty string for withdrawals and the balance" do
 			@account.deposit(500)
-			expect(@account.transactions).to include(["01/07/2019", 500, @account.balance])
+			expect(@account.transactions).to include(["01/07/2019", 500, "", @account.balance])
 		end
 	end
 end
