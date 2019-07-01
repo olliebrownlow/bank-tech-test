@@ -9,10 +9,16 @@ describe Account do
     end
 	end
 
-	describe "making a deposit" do
-		it "adds the expressed amount to the balance" do
+	describe "making deposits and withdrawals" do
+		it "adds the expressed deposit amount to the balance" do
 			@account.deposit(100)
 			expect(@account.balance).to eq(100)
+		end
+
+		it "debits the expressed withdrawal amount from the balance" do
+			@account.deposit(500)
+			@account.withdraw(100)
+			expect(@account.balance).to eq(400)
 		end
 	end
 end
