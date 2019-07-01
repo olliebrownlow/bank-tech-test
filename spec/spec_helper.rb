@@ -1,3 +1,5 @@
+require './lib/account.rb'
+
 require 'simplecov'
 require 'simplecov-console'
 

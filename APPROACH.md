@@ -9,6 +9,7 @@
 - BRIEF.md
 - README.md
 - `run git init`
+
 - make first commit
 
 ### Set up environment
@@ -28,6 +29,7 @@
 - Add Scaffolint .rubocop.yml file and update errors for new rubocop version
 - require simplecov in the spec_helper
 - Run `rspec` to check coverage stats are working
+
 - make second commit
 
 
