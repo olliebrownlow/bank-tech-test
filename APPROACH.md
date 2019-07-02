@@ -2,19 +2,17 @@
 
 ## 01/07/2019
 
-## To do
+## Order of execution
 
-### Create:
-- APPROACH.md
-- BRIEF.md
-- README.md
+### First steps:
+- Make directory to store the project
+- create APPROACH.md, BRIEF.md and README.md
 - `run git init`
 
 - make first commit
 
-### Set up environment
+### Environment set up
 
-- Make directory to store the project
 - Create Gemfile including
   - rubocop
   - rspec
@@ -40,6 +38,6 @@
 
 - Rubocop and code refactors
 
+### Blog
 
-
-
+I began by implementing the program all in one class. On reflection, and due to Separation of Concerns, I believe a program with 3 classes would be more desirable. I will therefore endeavor to split the program into Account, Transaction and Statement.

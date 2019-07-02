@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe Account do
-  ob = described_class::OPENING_BALANCE
+	ob = described_class::OPENING_BALANCE
 
   context 'All tests require an Account'
   before(:each) { @account = Account.new }

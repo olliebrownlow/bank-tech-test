@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class Account
-  OPENING_BALANCE = 0
+	OPENING_BALANCE = 0
+	HEADER = %w[date credit debit balance]
   attr_reader :balance, :transactions
 
   def initialize
@@ -19,8 +20,8 @@ class Account
 		add_debit_transaction(amount)
   end
 
-  def print_statement
-    @transactions.unshift(%w[date credit debit balance])
+	def print_statement
+    @transactions.unshift(HEADER)
     @transactions.each do |t|
       puts t.join(' || ')
     end
