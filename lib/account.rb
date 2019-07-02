@@ -11,22 +11,12 @@ class Account
 
   def deposit(amount)
     @balance += amount
-		@transactions.unshift([
-			formatted_date,
-			'%.2f' % amount,
-			'',
-			format('%.2f', @balance)
-		])
+		add_credit_transaction(amount)
   end
 
   def withdraw(amount)
     @balance -= amount
-		@transactions.unshift([
-			formatted_date,
-			'',
-			'%.2f' % amount,
-			format('%.2f', @balance)
-		])
+		add_debit_transaction(amount)
   end
 
   def print_statement
@@ -36,7 +26,25 @@ class Account
     end
   end
 
-  private
+	private
+	
+	def add_credit_transaction(amount)
+		@transactions.unshift([
+			formatted_date,
+			'%.2f' % amount,
+			'',
+			format('%.2f', @balance)
+		])
+	end
+
+	def add_debit_transaction(amount)
+		@transactions.unshift([
+			formatted_date,
+			'',
+			'%.2f' % amount,
+			format('%.2f', @balance)
+		])
+	end
 
   def formatted_date
     Time.now.strftime('%d/%m/%Y')
