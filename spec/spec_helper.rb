@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require './lib/account.rb'
+require './lib/transaction.rb'
+require './lib/statement.rb'
 
 require 'simplecov'
 require 'simplecov-console'

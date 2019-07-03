@@ -2,52 +2,33 @@
 
 class Account
 	OPENING_BALANCE = 0
-	HEADER = %w[date credit debit balance]
   attr_reader :balance, :transactions
 
-  def initialize
-    @balance = OPENING_BALANCE
+  def initialize(balance = OPENING_BALANCE)
+    @balance = balance
     @transactions = []
   end
 
   def deposit(amount)
     @balance += amount
-		add_credit_transaction(amount)
+		store_transaction(amount, :deposit)
   end
 
   def withdraw(amount)
     @balance -= amount
-		add_debit_transaction(amount)
+		store_transaction(amount, :withdraw)
   end
-
-	def print_statement
-    @transactions.unshift(HEADER)
-    @transactions.each do |t|
-      puts t.join(' || ')
-    end
-  end
-
-	private
 	
-	def add_credit_transaction(amount)
-		@transactions.unshift([
-			formatted_date,
-			'%.2f' % amount,
-			'',
-			format('%.2f', @balance)
-		])
+	def store_transaction(amount, type, date = Time.now, transaction = Transaction)
+		t = transaction.new(date, amount, @balance, type)
+		@transactions.push([t.date, t.amount, t.current_balance, t.type])
 	end
 
-	def add_debit_transaction(amount)
-		@transactions.unshift([
-			formatted_date,
-			'',
-			'%.2f' % amount,
-			format('%.2f', @balance)
-		])
+	def print_statement(statement = Statement)
+		s = statement.new(@transactions)
+		s.format_array
+    s.formatted_statement.each { |record|
+      puts record.join(' || ')
+		}
 	end
-
-  def formatted_date
-    Time.now.strftime('%d/%m/%Y')
-  end
 end
