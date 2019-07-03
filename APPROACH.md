@@ -40,4 +40,4 @@
 
 ### Blog
 
-I began by implementing the program all in one class. On reflection, and due to Separation of Concerns, I believe a program with 3 classes would be more desirable. I will therefore endeavor to split the program into Account, Transaction and Statement.
+I began by implementing the program all in one class. On reflection, and due to Separation of Concerns, I believe a program with 3 classes would be more desirable. I therefore endeavored to split the program into Account, Transaction and Statement. I did this on a separate branch (this one), and have it fully tested with a coverage of 100%.
