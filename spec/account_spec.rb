@@ -11,7 +11,7 @@ describe Account do
 
   let(:date)    { Time.now }
   let(:amount)  { 500 }
-  let(:balance) { 500}
+  let(:balance) { 500 }
   let(:type1)   { :deposit }
   let(:type2)   { :withdraw }
 
@@ -32,7 +32,7 @@ describe Account do
     it 'adds the expressed deposit amount to the balance' do
       @account.deposit(100)
       expect(@account.balance).to eq(100 + ob)
-		end
+ 		end
 
     it 'debits the expressed withdrawal amount from the balance' do
       @account.deposit(500)
@@ -50,7 +50,7 @@ describe Account do
     it 'stores each withdrawal transaction with a date stamp, an empty string for deposits, the withdrawal amount and the balance' do
       @account.store_transaction(amount, type2, date, transaction_class2)
       expect(@account.transactions).to include([date, 500, 500, :withdraw])
-		end
+ 		end
 	end
 
   describe 'statements' do

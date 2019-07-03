@@ -11,24 +11,24 @@ class Account
 
   def deposit(amount)
     @balance += amount
-		store_transaction(amount, :deposit)
+ 		 store_transaction(amount, :deposit)
   end
 
   def withdraw(amount)
     @balance -= amount
-		store_transaction(amount, :withdraw)
+ 		 store_transaction(amount, :withdraw)
   end
 	
 	def store_transaction(amount, type, date = Time.now, transaction = Transaction)
-		t = transaction.new(date, amount, @balance, type)
-		@transactions.push([t.date, t.amount, t.current_balance, t.type])
-	end
+ 		t = transaction.new(date, amount, @balance, type)
+ 		@transactions.push([t.date, t.amount, t.current_balance, t.type])
+ 	end
 
 	def print_statement(statement = Statement)
-		s = statement.new(@transactions)
-		s.format_array
+ 		s = statement.new(@transactions)
+ 		s.format_array
     s.formatted_statement.each { |record|
       puts record.join(' || ')
-		}
-	end
+  	}
+ 	end
 end
